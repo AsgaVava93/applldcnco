@@ -38,9 +38,9 @@ require_once("functions.php");
 	</div>
 	<div data-role="content">	
 		<ul data-role="listview">
-			<li><a href="#precedenti">Letture-Precedenti</a></li>
+			<li><a href="#precedenti">Letture Precedenti</a></li>
             <li><a href="#nuova">Nuova Lettura</a></li>
-			<li><a href="#istruzioni">Istruzioni</a></li>
+			<li><a href="#istruzioni">Guida</a></li>
 		</ul>		
 	</div>
 	<div data-role="footer">
