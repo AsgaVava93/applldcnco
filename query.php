@@ -103,11 +103,9 @@ class MyQueries {
 
 		$this->INSERT_VIDEO = 		"INSERT INTO `{$this->_VIDEOS_TABLE}` (`youtube`, `title`, `descr`, `event`, `date`) VALUES ('%s', '%s', '%s', '%d', '%s')";
 		
-		$this->INSERISCI_LETTURA = 		"INSERT INTO `{$this->_CONTATORE}` (`data`, `misura`, `foto`, `note`) VALUES ('%s', '%s', '%d', '%s')";
+		$this->INSERISCI_LETTURA = 		"INSERT INTO `{$this->_CONTATORE}` (`data`, `misura`, `foto`, `note`) VALUES ('%s', '%s', '%s', '%s')";
 		
 		$this->VISUALIZZA_LETTURE = 	"SELECT * FROM `{$this->_CONTATORE}` ORDER BY `ID`";
-		
-		$this->ULTIMA_LETTURA = 	"SELECT * FROM `{$this->_CONTATORE}` WHERE ID = MAX(ID)";
 
 			
 		// Operazioni di UPDATE

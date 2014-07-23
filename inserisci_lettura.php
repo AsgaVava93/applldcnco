@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Untitled Document</title>
+<title>Inserimento Lettura</title>
 </head>
 
 <body>
@@ -24,23 +24,21 @@ $internal = TRUE;
 
 require_once("functions.php");
 
-	$dir = "./images/".md5(mysql_insert_id())."/";
-	
-	echo $_POST['data'];
-	echo $_POST['misura'];
-	echo $_POST['note'];
-	echo $_FILES["foto"];
+    $file_name_tmp = $_FILES["foto"]["tmp_name"];
 
- 	 $data = $_POST['data'];
-     $misura = $_POST['misura'];
-     $note = $_POST['note'];
-	 resize_photo($dir, $_FILES["foto"], "foto.jpg", 400, 1000);
-	 $foto = $_FILES["foto"];
+if ($file_name_tmp) //controllo se c'e la foto altrimenti ottengo due entry
+{
+    $misura = $_POST['misura'];
+    $note = $_POST['note'];
+    $data = $_POST['data'];
+    move_uploaded_file($file_name_tmp, "images/" .$data.".jpg");
+    $link = "<a href=\"images/".$data.".jpg\""." title=\"foto\" target=\"_top\">Foto</a>";
 
-     $result = $DB->doquery(sprintf($QUERY->INSERISCI_LETTURA, $data, $misura, $foto, $note));
-	 
-	 sleep(5);
-	 require_once("index.html");
+    $result = $DB->doquery(sprintf($QUERY->INSERISCI_LETTURA, $data, $misura, $link, $note));
+}
+
+require_once("index.html");
+exit;
 ?>
 
 </body>

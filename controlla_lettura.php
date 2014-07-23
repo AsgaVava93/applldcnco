@@ -4,10 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <title>Untitled Document</title>
-<link href="jquery-mobile/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css" />
-<link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css" />
-<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
-<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -37,30 +33,10 @@ require_once("functions.php");
      $misura = $_POST['misura'];
      $note = $_POST['note'];
 	 $foto = 0;
-	 
-	 $result = $DB->doquery(sprintf($QUERY->ULTIMA_LETTURA));
-
-
-		while($row=$DB->fetchrow($result))
-		{
-			echo "  <tr>
-			<td>".$row["data"]."</td>
-			<td>".$row["misura"]."</td>
-			<td>".$row["foto"]."</td>
-			<td>".$row["note"]."</td>
-			</tr>";
-		}
-		
-		?>
-        
-<a href="#confirm" data-role="Continua">Button</a>
-
-<div id="confirm">
-<?php
 
         $result = $DB->doquery(sprintf($QUERY->INSERISCI_LETTURA, $data, $misura, $foto, $note));
 		?>
-</div>
+
 	</div>
 	<div data-role="footer">
     <h4>

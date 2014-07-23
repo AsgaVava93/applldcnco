@@ -7,7 +7,7 @@
 
 <body>
 <div style="border:none; margin:0;">
-<table width="100%" border="0" cellpadding="3">
+<table border="0" cellpadding="3">
 	<tr>
     	<th scope="col">Data</th>
     	<th scope="col">Misura</th>

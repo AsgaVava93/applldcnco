@@ -29,6 +29,30 @@ require_once("functions.php");
 <link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
 <script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.form.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#lettura').ajaxForm(function(e) {
+                e.preventDefault();
+
+                var misura = $.trim($('#misura').val());
+                var foto = $.trim($('#foto').val());
+
+                if (misura === 0) {
+                    alert('Scrivi un valore nel campo misura');
+                    return false;
+                }
+
+                if (foto  === '') {
+                    alert('Manca la foto');
+                    return false;
+                }
+
+                return true;
+            });
+        });
+    </script>
 </head> 
 <body> 
 
@@ -71,19 +95,19 @@ require_once("functions.php");
 		<h1>Nuova Lettura</h1>
 	</div>
 	<div data-role="content">
-    <form action="inserisci_lettura.php" method="POST"  />
+    <form id="lettura" action="inserisci_lettura.php" method="post" enctype="multipart/form-data">
 	  <div data-role="fieldcontain">
-    <label for="data">Data:</label>
-    
-	    <input type="text" name="data" id="data" value="<?php $today=getdate(); echo $today["mday"]."/".$today["month"]."/".$today["year"]; ?>"  />
-	      
+
+	    <input type="hidden" name="data" id="data" value="<?php date_default_timezone_set('Europe/Rome'); echo date('d-m-Y_H:i:s'); ?>"  />
+
 	    <label for="misura">Misura:</label>
 	    <input type="number" name="misura" id="misura" value=""  />
         
 	    <label for="note">Note:</label>
 	    <textarea cols="40" rows="8" name="note" id="note"></textarea>
-        
-	  	<input type="file" name="foto" id="foto" size="45" />
+        <br>
+        <label for="foto">Aggiungi foto: </label>
+	  	<input type="file" name="foto" id="foto" />
       </div>
 	  <input type="submit" value="Invia Lettura" />
     </form>
